@@ -7,7 +7,7 @@ public class MaximumSubarray {
     static int maxSubArray(int[] nums) {
 //      Basically even if we have a sum in the negative space we know that 0 is still greater than any negative number so we just entirely allocate the sum to 0 because of this reason.
         int R=0;
-        long max=Long.MIN_VALUE;
+        long max=0;
         if (nums.length==1){
             return nums[0];
         }
