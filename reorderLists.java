@@ -1,3 +1,5 @@
+import java.util.List;
+
 //https://leetcode.com/problems/reorder-list/?envType=daily-question&envId=2024-03-23
 public class reorderLists {
     public static class ListNode {
@@ -16,15 +18,25 @@ public class reorderLists {
         }
     }
     static public ListNode reorderList(ListNode head) {
-        int fast=0;
+        if (head == null || head.next == null) return head;
         ListNode temp = head;
-        ListNode temp1=new ListNode();
+        ListNode temp1 = new ListNode();
+        ListNode temp2 = head;
         while(temp!=null){
-
             temp=temp.next.next;
+            temp1.next=temp;
+            temp1=temp1.next;
+        }
+//      Reverse the elements we got in the above list
+        ListNode prev = null, next = null;
+        while (temp2 != null) {
+            next = temp2.next;
+            temp2.next = prev;
+            prev = temp2;
+            temp2 = next;
         }
 
 
-        return head;
+        return prev;
     }
 }
