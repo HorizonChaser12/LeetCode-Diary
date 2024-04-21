@@ -5,6 +5,10 @@ public class romanToInteger {
         System.out.println(romanToInt(s));
     }
     public static int romanToInt(String s) {
+//      Basically it's a very wise utilisation of switch case. It uses the description to match the number and then uses comparison to whether decrease the number or increase.
+//      For example this no "IV" V(5) first which is greater than I(1).So it is subtracted.
+//      Another example is "VI" I is smaller so its is added to V.
+//      Simple yet beautiful logic.
         int answer = 0, number = 0, prev = 0;
 
         for (int j = s.length() - 1; j >= 0; j--) {
