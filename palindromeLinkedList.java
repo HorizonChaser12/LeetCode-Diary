@@ -23,20 +23,51 @@ public class palindromeLinkedList {
     }
 
     public static void main(String[] args) {
-        palindromeLinkedList.ListNode head= new palindromeLinkedList.ListNode(1,new palindromeLinkedList.ListNode(2,new palindromeLinkedList.ListNode(1)));
+        palindromeLinkedList.ListNode head= new palindromeLinkedList.ListNode(1,new palindromeLinkedList.ListNode(0,new palindromeLinkedList.ListNode(0)));
         System.out.println(isPalindrome(head));
     }
 
     static boolean isPalindrome(ListNode head) {
-        ListNode temp = head;
-        List<Integer> list = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-        while (temp != null) {
-            list.add(temp.val);
-            list2.add(temp.val);
-            temp = temp.next;
+//        ListNode temp = head;
+//        List<Integer> list = new ArrayList<>();
+//        List<Integer> list2 = new ArrayList<>();
+//        while (temp != null) {
+//            list.add(temp.val);
+//            list2.add(temp.val);
+//            temp = temp.next;
+//        }
+//        Collections.reverse(list);
+//        return list.equals(list2);
+
+//      A good solution using only LL operations.
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast.next != null) {
+            fast = fast.next;
+            if (fast.next != null) {
+                fast = fast.next;
+            }
+            slow = slow.next;
         }
-        Collections.reverse(list);
-        return list.equals(list2);
+        fast=reverse(slow);
+        ListNode temp = head;
+        while(fast!=null && temp!=null){
+            if (temp.val!=fast.val){
+                return false;
+            }
+            temp=temp.next;
+            fast=fast.next;
+        }
+        return true;
+    }
+    static ListNode reverse (ListNode head){
+        ListNode temp=null;
+        while(head!=null){
+            ListNode next=head.next;
+            head.next=temp;
+            temp=head;
+            head=next;
+        }
+        return temp;
     }
 }
