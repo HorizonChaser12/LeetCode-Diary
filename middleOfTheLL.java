@@ -45,7 +45,7 @@ public class middleOfTheLL {
         while (fast.next != null) {
             fast = fast.next;
             if (fast.next != null) {
-                fast = fast.next;
+                fast = fast.next; 
             }
             slow = slow.next;
         }
