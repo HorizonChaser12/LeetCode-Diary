@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/rotate-list/
 public class rotateList {
     static class ListNode {
         int val;
@@ -13,8 +14,8 @@ public class rotateList {
         }
     }
     public static void main(String[] args) {
-        ListNode head = new ListNode(0,new ListNode(1,new ListNode(2)));
-        int k=4;
+        ListNode head = new ListNode(1,new ListNode(2,new ListNode(3, new ListNode(4, new ListNode(5)))));
+        int k=2;
         ListNode node = rotateRight(head,k);
         while(node!=null){
             System.out.println(node.val);
@@ -23,43 +24,39 @@ public class rotateList {
     }
 
     static ListNode rotateRight(ListNode head, int k) {
-        ListNode temp = head;
         ListNode ans = new ListNode();
-        int counter=0,size=0;
-        while(temp!=null){
-            temp=temp.next;
-            size++;
-        }
-        temp=head;
-        if (size<k){
-
-        }
-        else{
-        while(temp!=null){
-            if (counter==size-k){
-               while(temp.next!=null){
-                   ans=temp;
-                   ans.next=temp.next;
-                   temp=temp.next;
-               }
-            }
-            temp=temp.next;
-            counter++;
-        }
-        }
         ListNode dummy = ans;
-        temp=head;
-        counter=0;
-        while(ans.next!=null){
-            ans=ans.next;
-        }
-        while(temp!=null && counter!=size-k){
-            ans.next=temp;
-            ans=ans.next;
+        int size = 0;
+        ListNode temp = head;
+        while (temp!=null){
+            size++;
             temp=temp.next;
-            counter++;
         }
-        ans.next=null;
-        return dummy;
+        temp = head;
+        int counter = 0;
+        k = k % size;
+        if (k == 0) {
+            return head;
+        }
+        while(k!=0){
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            ans.next=new ListNode(temp.val);
+            ans=ans.next;
+            temp=head;
+            while(counter!=size-1){
+                ans.next=new ListNode(temp.val);
+                ans=ans.next;
+                temp=temp.next;
+                counter++;
+            }
+            head=dummy;
+            ans=new ListNode();
+            temp=head;
+            counter=0;
+            k--;
+        }
+        return dummy.next;
     }
 }
