@@ -28,7 +28,7 @@ public class LongestSubarrayWithSumK {
 //        }
 //        return max;
 
-//      My code might run on O(n^2) but that aint entirely sliding window as i am reducing the window size rather i am just adjusting the two pointers which equals to more complexity.
+//      My code might run on O(n^2) but that aint entirely sliding window as I am reducing the window size rather i am just adjusting the two pointers which equals to more complexity.
 //      In the following code he utilized the sliding window to the best approach and passed all test cases. Try to code like this.
         int left =0,right=0;
         int maxlength =0;
