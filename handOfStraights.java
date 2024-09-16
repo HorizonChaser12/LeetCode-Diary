@@ -1,33 +1,33 @@
 import java.util.Arrays;
-
+//https://leetcode.com/problems/hand-of-straights/description/
+//Basically the last code here is the actual solution for all th values lying under the integer limit,and for further numbers we have to anyhow use hashmaps.
 public class handOfStraights {
     public static void main(String[] args) {
-        int[] hands = {1,2,3,6,2,3,4,7,8};
+        int[] hands = {8,10,12};
         int groupSize = 3;
-        System.out.println(isNStraightHand(hands,groupSize));
+        System.out.println(isNStraightHand(hands, groupSize));
     }
+
     static boolean isNStraightHand(int[] hand, int groupSize) {
-        int max = 0;
-        for (int i = 0; i < hand.length; i++) {
-            max=Math.max(hand[i],max);
+        if (hand.length % groupSize != 0) {
+            return false;
         }
-        int[] freq = new int[max+1];
-        for (int i = 0; i < freq.length; i++) {
+        Arrays.sort(hand);
+        int[] freq = new int[hand[hand.length - 1] + 1];
+        for (int i = 0; i < hand.length; i++) {
             freq[hand[i]]++;
         }
-        System.out.println(Arrays.toString(freq));
-        int group;
-        for (int i = 1; i < freq.length; i++) {
-            group = 0;
-            while(group!=groupSize){
-                if (freq[i]==0){
-                    break;
-                }
-                freq[i]--;
-                i++;
-                group++;
+        for (int i = 0; i < hand.length; i++) {
+            if (freq[hand[i]] == 0) {
+                continue;
             }
-            System.out.println(Arrays.toString(freq));
+
+            for (int j = 0; j < groupSize; j++) {
+                if (hand[i] + j >= freq.length || freq[hand[i] + j] == 0) {
+                    return false;
+                }
+                freq[hand[i] + j]--;
+            }
         }
         return true;
     }
