@@ -1,8 +1,10 @@
 import java.util.Arrays;
+import java.util.Stack;
+
 //https://leetcode.com/problems/next-greater-element-i/description/
 public class NextGreaterElement1 {
     public static void main(String[] args) {
-        int[] nums1 ={4,1,2},nums2={1,3,4,2};
+        int[] nums1 ={2,4},nums2={1,2,3,4};
         System.out.println(Arrays.toString(nextGreaterElement(nums1,nums2)));
     }
     static int[] nextGreaterElement(int[] nums1, int[] nums2) {
