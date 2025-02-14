@@ -1,4 +1,3 @@
-import java.util.Arrays;
 //https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/
 public class checkArraySotedAndRotated {
     public static void main(String[] args) {
@@ -14,10 +13,7 @@ public class checkArraySotedAndRotated {
                 count++;
             }
         }
-        if(count>1){
-            return false;
-        }
-        return true;
+        return count <= 1;
     }
 }
 
