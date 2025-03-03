@@ -30,12 +30,10 @@ public class mergeTwo2dArraysBySummingValues {
 
         for (int[] num : nums1) {
             set.add(num[0]);
-
         }
 
         for (int[] num : nums2) {
             set.add(num[0]);
-
         }
         int[][] res = new int[set.size()][2];
         int k = 0;

@@ -7,9 +7,9 @@ public class rough {
 //        System.out.println(code(hours));
 //        String s= "byd";
 //        System.out.println(getEncryptedString(s,4));
-            int n =3;
-        System.out.println(generateValidBinaryStrings(n));
-
+//            int n =3;
+//        System.out.println(generateValidBinaryStrings(n));
+        System.out.println(kangaroo(0, 3, 4, 2));
 
     }
 
@@ -39,28 +39,43 @@ public class rough {
 //        return ans;
 //    }
 
-    static List<String> generateValidBinaryStrings(int n) {
-        List<String> result = new ArrayList<>();
-        Queue<String> queue = new LinkedList<>();
-        if (n == 1) {
-            result.add("0");
-            result.add("1");
-            return result;
-        }
-        queue.add("0");
-        queue.add("1");
-        while (!queue.isEmpty()) {
-            String current = queue.poll();
-            if (current.length() == n) {
-                result.add(current);
-            } else {
-                queue.add(current + "1");
-                if (current.charAt(current.length() - 1) == '1') {
-                    queue.add(current + "0");
-                }
+//    static List<String> generateValidBinaryStrings(int n) {
+//        List<String> result = new ArrayList<>();
+//        Queue<String> queue = new LinkedList<>();
+//        if (n == 1) {
+//            result.add("0");
+//            result.add("1");
+//            return result;
+//        }
+//        queue.add("0");
+//        queue.add("1");
+//        while (!queue.isEmpty()) {
+//            String current = queue.poll();
+//            if (current.length() == n) {
+//                result.add(current);
+//            } else {
+//                queue.add(current + "1");
+//                if (current.charAt(current.length() - 1) == '1') {
+//                    queue.add(current + "0");
+//                }
+//            }
+//        }
+//        return result;
+//    }
+
+    static String kangaroo(int x1, int v1, int x2, int v2) {
+        // Write your code here
+        int prevdiff = 0;
+        while (x1 != x2 || x1 < 10000) {
+            if (Math.abs(x1 - x2) > prevdiff) {
+                return "NO";
             }
+            prevdiff=Math.abs(x1-x2);
+            x1 += v1;
+            x2 += v2;
+
         }
-        return result;
+        return "YES";
     }
 
 }
