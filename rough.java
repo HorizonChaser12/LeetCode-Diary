@@ -9,7 +9,9 @@ public class rough {
 //        System.out.println(getEncryptedString(s,4));
 //            int n =3;
 //        System.out.println(generateValidBinaryStrings(n));
-        System.out.println(kangaroo(0, 3, 4, 2));
+//        System.out.println(kangaroo(0, 3, 4, 2));
+        int[] nums = {1,1,0,1,1,1};
+        System.out.println(findMaxConsecutiveOnes(nums));
 
     }
 
@@ -78,7 +80,39 @@ public class rough {
         return "YES";
     }
 
+
+    static int findMaxConsecutiveOnes(int[] nums) {
+//            int i = 0;
+//            int j = 0;
+//            int ans = 0;
+//            while(j!=nums.length){
+//                if(nums[j]==0){
+//                    i=j+1;
+//                }
+//                j++;
+//                ans=Math.max(j-i,ans);
+//            }
+//            return ans;
+
+        int ans = 0;
+        int temp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i]==1){
+                temp++;
+                ans = Math.max(ans, temp);
+            }
+            else{
+                temp=0;
+            }
+
+        }
+        return ans;
+    }
+
 }
+
+
+
 
 
 //1,4,6,5,18,9,12
