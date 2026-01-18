@@ -20,4 +20,7 @@ public class moveZero {
             j++;
         }
     }
+
+
+
 }

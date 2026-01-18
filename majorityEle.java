@@ -1,5 +1,6 @@
 //https://leetcode.com/problems/majority-element/description/
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class majorityEle {
     public static void main(String[] args){
@@ -40,9 +41,27 @@ public class majorityEle {
 
 //    Better Runtime method!
     public static int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        int n= nums.length;
-        return nums[nums.length/2];
+//        Arrays.sort(nums);
+//        int n= nums.length;
+//        return nums[nums.length/2];
+
+        int count = 0;
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0;i<nums.length;i++){
+            count = 0;
+            if(!set.contains(nums[i])){
+                for(int j=0;j<nums.length;j++){
+                    if(nums[i]==nums[j]){
+                        count++;
+                        if(count>nums.length/2){
+                            return nums[i];
+                        }
+                    }
+                }
+                set.add(nums[i]);
+            }
+        }
+        return -1;
     }
 
 }

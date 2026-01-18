@@ -8,6 +8,7 @@ public class NextGreaterElement1 {
         System.out.println(Arrays.toString(nextGreaterElement(nums1,nums2)));
     }
     static int[] nextGreaterElement(int[] nums1, int[] nums2) {
+//        BruteForce
         int k;
         int[] ans=new int[nums1.length];
         for(int i=0;i<nums1.length;i++){

@@ -28,4 +28,5 @@ public class fourDivisors {
         }
         return sum;
     }
+
 }

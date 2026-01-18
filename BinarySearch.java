@@ -1,8 +1,8 @@
 //https://leetcode.com/problems/binary-search/description
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] nums = {3,12,18,28,29,30,35,36,40,45};
-        int target = 3;
+        int[] nums = {-1,0,3,5,9,12};
+        int target = 9;
         System.out.println(search(nums,target));
     }
     static  int search(int[] nums, int target) {
