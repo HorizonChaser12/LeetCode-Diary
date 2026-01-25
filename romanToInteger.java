@@ -9,10 +9,33 @@ public class romanToInteger {
 //      For example this no "IV" V(5) first which is greater than I(1).So it is subtracted.
 //      Another example is "VI" I is smaller so its is added to V.
 //      Simple yet beautiful logic.
-        int answer = 0, number = 0, prev = 0;
+//        int answer = 0, number = 0, prev = 0;
+//
+//        for (int j = s.length() - 1; j >= 0; j--) {
+//            switch (s.charAt(j)) {
+//                case 'M' -> number = 1000;
+//                case 'D' -> number = 500;
+//                case 'C' -> number = 100;
+//                case 'L' -> number = 50;
+//                case 'X' -> number = 10;
+//                case 'V' -> number = 5;
+//                case 'I' -> number = 1;
+//            }
+//            if (number < prev) {
+//                answer -= number;
+//            }
+//            else {
+//                answer += number;
+//            }
+//            prev = number;
+//        }
+//        return answer;
 
-        for (int j = s.length() - 1; j >= 0; j--) {
-            switch (s.charAt(j)) {
+        int ans = 0;
+        int prev = 0;
+        int number = 0;
+        for (int i = s.length()-1; i >= 0; i--) {
+            switch (s.charAt(i)) {
                 case 'M' -> number = 1000;
                 case 'D' -> number = 500;
                 case 'C' -> number = 100;
@@ -22,13 +45,13 @@ public class romanToInteger {
                 case 'I' -> number = 1;
             }
             if (number < prev) {
-                answer -= number;
+                ans -= number;
             }
             else {
-                answer += number;
+                ans += number;
             }
             prev = number;
         }
-        return answer;
+        return ans;
     }
 }
