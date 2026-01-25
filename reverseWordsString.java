@@ -4,7 +4,7 @@ import java.util.List;
 //https://leetcode.com/problems/reverse-words-in-a-string/description/
 public class reverseWordsString {
     public static void main(String[] args) {
-        String input="a";
+        String input="a good   example";
         System.out.println(reverseWords(input));
     }
     public static String reverseWords(String s) {
@@ -20,26 +20,46 @@ public class reverseWordsString {
 
 
 //      Without using much of the advanced things like regex and stuff.
-        List<String> list = new ArrayList<>();
+//        List<String> list = new ArrayList<>();
+//        s=s.trim();
+//        StringBuilder ans = new StringBuilder();
+//        for (int i = 0; i < s.length();) {
+//            while(i<s.length() && s.charAt(i)==' '){
+//                i++;
+//            }
+//            int start =i;
+//            while(i<s.length() && s.charAt(i)!=' '){
+//                i++;
+//            }
+//            int end =i;
+//            list.add(s.substring(start,end));
+//        }
+//        for (int i = list.size()-1; i >= 0; i--) {
+//            ans.append(list.get(i));
+//            if(i>0){
+//                ans.append(" ");
+//            }
+//        }
+//        return ans.toString();
         s=s.trim();
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i)!=' ') {
+                int start = i;
+                int end = i + 1;
+                while (end < s.length() && s.charAt(end) != ' ') {
+                    end++;
+                }
+                list.add(s.substring(start, end));
+                i = end;
+            }
+        }
         StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < s.length();) {
-            while(i<s.length() && s.charAt(i)==' '){
-                i++;
-            }
-            int start =i;
-            while(i<s.length() && s.charAt(i)!=' '){
-                i++;
-            }
-            int end =i;
-            list.add(s.substring(start,end));
-        }
-        for (int i = list.size()-1; i >= 0; i--) {
+        for (int i = list.size()-1; i>=0; i--) {
             ans.append(list.get(i));
-            if(i>0){
-                ans.append(" ");
-            }
+            ans.append(" ");
         }
-        return ans.toString();
+
+        return ans.toString().trim();
     }
 }

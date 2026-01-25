@@ -51,18 +51,42 @@ public class findFirstAndLastPositionOfElementInSortedArray {
 //        return new int[]{start,end};
 
 //      Beats 100% of the users, basic linear Search Rocks LOL!
-        int first = -1;
-        int last = -1;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i]==target){
-                first=i;
-                while (i<nums.length-1 && nums[i+1]==target){
+//        int first = -1;
+//        int last = -1;
+//        for (int i = 0; i < nums.length; i++) {
+//            if (nums[i]==target){
+//                first=i;
+//                while (i<nums.length-1 && nums[i+1]==target){
+//                    i++;
+//                }
+//                last = i;
+//                break;
+//            }
+//        }
+//        return new int[] {first,last};
+
+        int start = 0;
+        int end = nums.length-1;
+        while(start<=end){
+            int middle = start + (end-start) / 2;
+            if(nums[middle]==target){
+                int i = middle;
+                int j =  middle;
+                while(j>0 && nums[j-1]==target){
+                    j--;
+                }
+                while(i< nums.length-1 && nums[i+1]==target){
                     i++;
                 }
-                last = i;
-                break;
+                return new int[]{j,i};
+            }
+            else if(nums[middle]>target){
+                end=middle-1;
+            }
+            else if(nums[middle]<target){
+                start=middle+1;
             }
         }
-        return new int[] {first,last};
+        return new int[]{-1,-1};
     }
 }
