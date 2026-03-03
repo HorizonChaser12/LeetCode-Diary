@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 //https://leetcode.com/problems/set-matrix-zeroes/description/
+import java.util.*;
 
 
 public class setMatrixZeroes {
@@ -16,31 +15,50 @@ public class setMatrixZeroes {
         setZeroes(matrix);
     }
     static void setZeroes(int[][] matrix) {
-        List<Integer> rowcount = new ArrayList<>();
-        List<Integer> colcount = new ArrayList<>();
+        // List<Integer> rowcount = new ArrayList<>();
+        // List<Integer> colcount = new ArrayList<>();
 
-        for(int row=0;row<matrix.length;row++){
-            for(int col=0;col<matrix[row].length;col++){
-                if(matrix[row][col]==0){
-                    rowcount.add(row);
-                    colcount.add(col);
+        // for(int row=0;row<matrix.length;row++){
+        //     for(int col=0;col<matrix[row].length;col++){
+        //         if(matrix[row][col]==0){
+        //             rowcount.add(row);
+        //             colcount.add(col);
+        //         }
+        //     }
+        // }
+        // for (Integer integer : rowcount) {
+        //     Arrays.fill(matrix[integer], 0);
+        // }
+
+        // for(int i=0;i<matrix.length;i++){
+        //     for (Integer integer : colcount) {
+        //         matrix[i][integer] = 0;
+        //     }
+        // }
+        // for (int[] ints : matrix) {
+        //     for (int anInt : ints) {
+        //         System.out.print(anInt + " ");
+        //     }
+        //     System.out.println();
+        // }
+
+        HashSet<Integer> row = new HashSet<>();
+        HashSet<Integer> col = new HashSet<>();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j]==0) {
+                    row.add(i);
+                    col.add(j);   
                 }
             }
         }
-        for (Integer integer : rowcount) {
-            Arrays.fill(matrix[integer], 0);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (row.contains(i) || col.contains(j)) {
+                    matrix[i][j] = 0;
+                }
+            }
         }
 
-        for(int i=0;i<matrix.length;i++){
-            for (Integer integer : colcount) {
-                matrix[i][integer] = 0;
-            }
-        }
-        for (int[] ints : matrix) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-            System.out.println();
-        }
     }
 }
