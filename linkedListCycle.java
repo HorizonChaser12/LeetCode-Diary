@@ -13,14 +13,28 @@ public class linkedListCycle {
         System.out.println(hasCycle(head));
     }
     static boolean hasCycle(ListNode head) {
-        ListNode temp=head;
-        while(temp!=null){
-            if(temp.val==Integer.MAX_VALUE)
-            {
+//        ListNode temp=head;
+//        while(temp!=null){
+//            if(temp.val==Integer.MAX_VALUE)
+//            {
+//                return true;
+//            }
+//            temp.val=Integer.MAX_VALUE;
+//            temp=temp.next;
+//        }
+//        return false;
+
+        if(head==null || head.next == null){
+            return false;
+        }
+        ListNode fast=head.next;
+        ListNode slow = head;
+        while(slow!=null){
+            if(slow==fast){
                 return true;
             }
-            temp.val=Integer.MAX_VALUE;
-            temp=temp.next;
+            slow = slow.next;
+            fast = fast.next;
         }
         return false;
     }

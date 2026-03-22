@@ -40,14 +40,26 @@ public class middleOfTheLL {
         //     mid--;
         // }
         // return temp;
+//        ListNode fast = head;
+//        ListNode slow = head;
+//        while (fast.next != null) {
+//            fast = fast.next;
+//            if (fast.next != null) {
+//                fast = fast.next;
+//            }
+//            slow = slow.next;
+//        }
+//        return slow;
         ListNode fast = head;
         ListNode slow = head;
-        while (fast.next != null) {
+        int count = 0;
+        while(fast!=null){
             fast = fast.next;
-            if (fast.next != null) {
-                fast = fast.next; 
+            count++;
+            if(count==2){
+                count = 0;
+                slow = slow.next;
             }
-            slow = slow.next;
         }
         return slow;
     }
