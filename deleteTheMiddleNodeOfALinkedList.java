@@ -17,7 +17,7 @@ public class deleteTheMiddleNodeOfALinkedList {
         }
     }
     public static void main(String[] args) {
-        deleteTheMiddleNodeOfALinkedList.ListNode head = new deleteTheMiddleNodeOfALinkedList.ListNode(1,new deleteTheMiddleNodeOfALinkedList.ListNode(3,new deleteTheMiddleNodeOfALinkedList.ListNode(4,new deleteTheMiddleNodeOfALinkedList.ListNode(7,new deleteTheMiddleNodeOfALinkedList.ListNode(1,new deleteTheMiddleNodeOfALinkedList.ListNode(2,new deleteTheMiddleNodeOfALinkedList.ListNode(6)))))));
+        deleteTheMiddleNodeOfALinkedList.ListNode head = new deleteTheMiddleNodeOfALinkedList.ListNode(1,new deleteTheMiddleNodeOfALinkedList.ListNode(2,new deleteTheMiddleNodeOfALinkedList.ListNode(3,new deleteTheMiddleNodeOfALinkedList.ListNode(4))));
         ListNode Node = deleteMiddle(head);
         while (Node!=null){
             System.out.println(Node.val);
@@ -25,25 +25,39 @@ public class deleteTheMiddleNodeOfALinkedList {
         }
     }
     static ListNode deleteMiddle(ListNode head) {
-        if( head == null || head.next == null ){
+//        if( head == null || head.next == null ){
+//            return null;
+//        }
+//        ListNode temp = head;
+//        int size = 0;
+//        ListNode temp1 = head;
+//        while(temp1!=null){
+//            temp1=temp1.next;
+//            size++;
+//        }
+//        int counter = 0;
+//        while(temp!=null){
+//            if(counter==size/2 - 1){
+//                temp.next=temp.next.next;
+//            }
+//            temp=temp.next;
+//            counter++;
+//        }
+//        return head;
+
+
+        if(head == null || head.next == null){
             return null;
         }
-        ListNode temp = head;
-        int size = 0;
-        ListNode temp1 = head;
-        while(temp1!=null){
-            temp1=temp1.next;
-            size++;
+        ListNode fast = head;
+        ListNode slow = head;
+        ListNode prev = null;
+        while(fast != null && fast.next!=null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        int counter = 0;
-        while(temp!=null){
-            if(counter==size/2 - 1){
-                temp.next=temp.next.next;
-            }
-            temp=temp.next;
-            counter++;
-        }
+        prev.next = slow.next;
         return head;
     }
-
 }

@@ -8,20 +8,44 @@ public class squaresOfSortedArray {
         System.out.println(Arrays.toString(sortedSquares(nums)));
     }
     static int[] sortedSquares(int[] nums) {
-        int start=0;
-        int end= nums.length-1;
+//        int start=0;
+//        int end= nums.length-1;
+//        int[] ans = new int[nums.length];
+//        int j= nums.length-1;
+//        while (start<=end){
+//            if(nums[start]*nums[start] > nums[end]*nums[end]){
+//                ans[j]=nums[start]*nums[start];
+//                start++;
+//            }
+//            else {
+//                ans[j]=nums[end]*nums[end];
+//                end--;
+//            }
+//            j--;
+//        }
+//        return ans;
         int[] ans = new int[nums.length];
-        int j= nums.length-1;
-        while (start<=end){
-            if(nums[start]*nums[start] > nums[end]*nums[end]){
-                ans[j]=nums[start]*nums[start];
+        int end = nums.length-1;
+        int start = 0;
+        int insert = end;
+        while(start<=end){
+            int first = Math.abs(nums[start]);
+            int second = Math.abs(nums[end]);
+            if(first>second){
+                ans[insert] = first*first;
+                insert --;
                 start++;
             }
-            else {
-                ans[j]=nums[end]*nums[end];
+            else if (second>first){
+                ans[insert] = second*second;
+                insert--;
                 end--;
             }
-            j--;
+            else{
+                ans[insert] = first*first;
+                start++;
+                insert--;
+            }
         }
         return ans;
     }
