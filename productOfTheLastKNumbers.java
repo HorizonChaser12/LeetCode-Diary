@@ -22,7 +22,7 @@ public class productOfTheLastKNumbers {
             list= new ArrayList<>();
             prefixSum=new int[list.size()];
             Arrays.fill(prefixSum,0);
-            prefixSum[list.size()-1]=list.getLast();
+            prefixSum[list.size()-1]=list.get(list.size()-1);
             for(int i=list.size()-2;i>0;i--){
                 prefixSum[i]=prefixSum[i+1]*list.get(i);
                 if(prefixSum[i]==0){
